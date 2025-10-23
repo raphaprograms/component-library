@@ -1,13 +1,22 @@
 import AlertBox from "./components/AlertBox";
 import Button from "./components/Button";
 import Section from "./components/Section";
+import UserProfileCard from "./components/UserProfileCard";
 
 
 function App() {
 
+  const user = {
+        id: '1',
+        name: 'Booker T.',
+        email: 'Booker.T@example.com',
+        role: 'Awesome Guy',
+        avatarUrl: 'https://example.com/avatar.jpg'
+      };
+
   return (
-    <main className="bg-stone-900 text-white">
-      {/* <AlertBox 
+    <main className="h-screen flex items-center justify-center w-2/3">
+      <AlertBox 
         type='success'
         message="Your profile has been updated as expected!"
         onClose={() => alert('Alert closed')}
@@ -37,9 +46,21 @@ function App() {
         onClose={() => alert('Now you know!')}
       >
         <p className="text-sm">You are free to continue using this application.</p>
-      </AlertBox> */}
+      </AlertBox>
 
-      <h1>Components Library</h1>
+      
+      <UserProfileCard
+        user={user}
+        showEmail={true}
+        showRole={true}
+        onEdit={(userId) => alert(`Editing user ${userId}`)}
+      >
+        <div className="text-sm text-gray-500">
+          Last login: 2 hours ago
+        </div>
+      </UserProfileCard>
+
+      {/* <h1>Components Library</h1>
 
       <Section title='Section 1'>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -69,7 +90,7 @@ function App() {
           <Button text='Submit' type='reset' disabled={true} onClick={() => console.log('Reset')}/>
 
         </div>
-      </Section>
+      </Section> */}
 
     </main>
 
